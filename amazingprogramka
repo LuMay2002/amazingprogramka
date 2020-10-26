@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<time.h>
+int y =0; //это число которое вводит пользователь
+int z=0; //это очки
+// int n = 0; это не нужно но это было количество попыток
+int m = 0; // это число, которое получается при делении числа очков и отнимается от него
+int p;
+int sw(){
+printf("do you want to start over?\n 1. yes \n 2. no \n");
+scanf("%d", &p);
+switch(p) {
+case 1: notmain(); break;
+case 2: printf("ok bye"); break;
+default : printf("no such case"); return 0;}
+return 0;
+}
+int notmain()
+{
+srand(time(0));
+int o;
+int x = rand()%20; //это число
+printf("how many tries do you want?\n you can have 3 to 10\n");
+scanf("%d", &o);
+if (o<=10&&o>=3)
+{
+printf("write a number from 0 to 20\n you have %d tries\n", o);
+scanf("%d", &y);
+m=z/o;
+while ((y != x) && (z > 10) /*&& (n<10)*/)
+{
+
+if (y > x)
+{
+z = z - m;
+printf("too much\n your points are %d \n", z);
+
+if (z>=10)
+scanf("%d", &y);
+}
+else if (y < x) {
+z = z -m;
+printf("not enough\n your points are %d \n", z);
+
+if (z >= 10)
+
+scanf("%d", &y);
+
+}
+}
+if (x == y) {
+printf("!!!correct!!!\n %d points have been added to your points\n", z);
+z=z+z;
+}
+
+printf("endgame\n");
+printf("your points are %d\n", z);
+}
+else{ notmain(); }
+if (z<10) {
+printf("you're out of points");
+}
+else {
+sw();
+}}
+int main()
+{
+printf("welcome to the game\n write your points, from 50 to 1000\n ");
+scanf("%d", &z);
+if (z < 50)
+{
+printf("not enough points\n");
+}
+else if (z>1000)
+{
+printf("too much points\n"); ;
+}
+else {notmain();}
+}
